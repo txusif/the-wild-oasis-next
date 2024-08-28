@@ -184,7 +184,7 @@ export async function createBooking(newBooking) {
     throw new Error("Booking could not be created");
   }
 
-  return data;
+  return {data,error};
 }
 
 /////////////
@@ -227,9 +227,9 @@ export async function updateBooking(id, updatedFields) {
 export async function deleteBooking(id) {
   const { data, error } = await supabase.from("bookings").delete().eq("id", id);
 
-  if (error) {
-    console.error(error);
-    throw new Error("Booking could not be deleted");
-  }
-  return data;
+  // if (error) {
+  //   console.error(error);
+  //   throw new Error("Booking could not be deleted");
+  // }
+  return { data, error };
 }

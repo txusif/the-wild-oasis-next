@@ -1,19 +1,53 @@
 "use client";
 
+// import { useState } from "react";
 import { useReservation } from "@/app/_context/ReservationContext";
+import { differenceInDays, formatISO, isValid } from "date-fns";
+import { createReservationAction } from "@/app/_lib/actions";
+import SubmitButton from "./SubmitButton";
 
-function ReservationForm({ cabin, user }) {
-  const { maxCapacity } = cabin;
+function ReservationForm({ breakfastPrice, cabin, user }) {
+  // const [addBreakfast, setAddBreakfast] = useState(false);
+  const { id: cabinId, maxCapacity, regularPrice, discount } = cabin;
 
-  const { range } = useReservation();
+  const { range, resetRange } = useReservation();
+
+  const isValidStartDate = range?.from && isValid(new Date(range.from));
+  const isValidEndDate = range?.to && isValid(new Date(range.to));
+
+  const startDate = isValidStartDate
+    ? formatISO(new Date(range.from), { representation: "date" })
+    : null;
+
+  const endDate = isValidEndDate
+    ? formatISO(new Date(range.to), { representation: "date" })
+    : null;
+
+  const numNights =
+    isValidStartDate && isValidEndDate
+      ? differenceInDays(new Date(endDate), new Date(startDate))
+      : 0;
+
+  const cabinPrice = (regularPrice - discount) * numNights;
+
+  const bookingData = {
+    startDate,
+    endDate,
+    numNights,
+    cabinPrice,
+    cabinId,
+    // breakfastPrice,
+  };
+
+  const createReservationWithData = createReservationAction.bind(
+    null,
+    bookingData,
+  );
 
   return (
     <div className="scale-[1.01]">
       <div className="flex items-center justify-between bg-primary-800 px-16 py-2 text-primary-300">
         <p>Logged in as</p>
-        {/* <p>
-          {String(range?.from)} to {String(range?.to)}
-        </p> */}
 
         <div className="flex items-center gap-4">
           <img
@@ -27,7 +61,14 @@ function ReservationForm({ cabin, user }) {
         </div>
       </div>
 
-      <form className="flex flex-col gap-5 bg-primary-900 px-16 py-10 text-lg">
+      <form
+        // action={createReservationWithData}
+        action={async (formData) => {
+          await createReservationWithData(formData);
+          resetRange();
+        }}
+        className="flex flex-col gap-5 bg-primary-900 px-16 py-10 text-lg"
+      >
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
           <select
@@ -59,12 +100,26 @@ function ReservationForm({ cabin, user }) {
           />
         </div>
 
-        <div className="flex items-center justify-end gap-6">
-          <p className="text-base text-primary-300">Start by selecting dates</p>
+        {/* <div className="flex gap-2">
+          <input
+            type="checkbox"
+            name="hasBreakfast"
+            id="breakfast"
+            checked={addBreakfast}
+            onChange={() => setAddBreakfast((add) => !add)}
+            className="h-6 w-6 rounded-sm text-primary-800 accent-accent-500 disabled:cursor-not-allowed disabled:accent-gray-500"
+          />
+          <label htmlFor="breakfast">Want to add breakfast for $25 </label>
+        </div> */}
 
-          <button className="rounded-sm bg-accent-500 px-8 py-4 font-semibold text-primary-800 transition-all hover:bg-accent-600 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
-            Reserve now
-          </button>
+        <div className="flex items-center justify-end gap-6">
+          {!(startDate && endDate) ? (
+            <p className="text-base text-primary-300">
+              Start by selecting dates
+            </p>
+          ) : (
+            <SubmitButton pendingLabel="Reserving...">Reserve now</SubmitButton>
+          )}
         </div>
       </form>
     </div>

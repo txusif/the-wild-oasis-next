@@ -1,4 +1,4 @@
-function Button({ filter, handleFilter, activeFilter, children }) {
+function FilterButton({ filter, handleFilter, activeFilter, children }) {
   return (
     <button
       onClick={() => handleFilter(filter)}
@@ -9,4 +9,4 @@ function Button({ filter, handleFilter, activeFilter, children }) {
   );
 }
 
-export default Button;
+export default FilterButton;

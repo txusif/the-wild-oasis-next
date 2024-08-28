@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import Button from "./Button";
+import FilterButton from "./FilterButton";
 
 function Filter() {
   const searchParams = useSearchParams();
@@ -19,34 +19,34 @@ function Filter() {
 
   return (
     <div className="flex border border-primary-800">
-      <Button
+      <FilterButton
         activeFilter={activeFilter}
         filter="all"
         handleFilter={handleFilter}
       >
         All
-      </Button>
-      <Button
+      </FilterButton>
+      <FilterButton
         activeFilter={activeFilter}
         filter="small"
         handleFilter={handleFilter}
       >
         1&mdash;3 guests
-      </Button>
-      <Button
+      </FilterButton>
+      <FilterButton
         activeFilter={activeFilter}
         filter="medium"
         handleFilter={handleFilter}
       >
         4&mdash;7 guests
-      </Button>
-      <Button
+      </FilterButton>
+      <FilterButton
         activeFilter={activeFilter}
         filter="large"
         handleFilter={handleFilter}
       >
         8&mdash;12 guests
-      </Button>
+      </FilterButton>
     </div>
   );
 }
