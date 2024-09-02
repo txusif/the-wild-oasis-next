@@ -9,7 +9,7 @@ function Guest() {
   const session = useAuth();
 
   return (
-    <li>
+    <>
       {session?.user?.image ? (
         <Link
           href="/account"
@@ -39,7 +39,7 @@ function Guest() {
           Guest area
         </Link>
       )}
-    </li>
+    </>
   );
 }
 
