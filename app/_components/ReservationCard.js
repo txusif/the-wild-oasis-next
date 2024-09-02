@@ -71,7 +71,7 @@ function ReservationCard({ booking, onDelete }) {
         </div>
       </div>
 
-      <div className="flex border-primary-800 max-lg:gap-3 max-lg:divide-x-2 max-lg:divide-primary-800 max-lg:border-t lg:w-[100px] lg:flex-col lg:border-l">
+      <div className="flex border-primary-800 max-lg:divide-x-2 max-lg:divide-primary-800 max-lg:border-t lg:w-[100px] lg:flex-col lg:border-l">
         {!isPast(startDate) ? (
           <>
             <Link
