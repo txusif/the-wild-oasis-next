@@ -8,9 +8,11 @@ import logo from "@/public/logo.png";
 import Guest from "@/app/_components/Guest";
 import { usePathname } from "next/navigation";
 import SignOutButton from "@/app/_components/SignOutButton";
+import { useAuth } from "../_context/AuthContext";
 
-function MobileNav({ session }) {
+function MobileNav() {
   const pathname = usePathname();
+  const session = useAuth();
 
   return (
     <Sheet>
@@ -65,7 +67,7 @@ function MobileNav({ session }) {
                 About
               </Link>
             </li>
-            <Guest pathname={pathname} />
+            <Guest />
 
             {session?.user ? (
               <li>

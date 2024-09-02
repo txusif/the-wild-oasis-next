@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useAuth } from "@/app/_context/AuthContext";
+import { usePathname } from "next/navigation";
 
-function Guest({ pathname }) {
+function Guest() {
+  const pathname = usePathname();
   const session = useAuth();
 
   return (
@@ -22,7 +24,7 @@ function Guest({ pathname }) {
           <span
             className={`${
               pathname === "/account"
-                ? "max-md:border-b-2 max-md:border-accent-400 text-accent-400"
+                ? "text-accent-400 max-md:border-b-2 max-md:border-accent-400"
                 : ""
             }`}
           >

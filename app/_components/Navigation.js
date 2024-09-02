@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Guest from "@/app/_components/Guest";
 
-export default async function Navigation() {
+export default function Navigation() {
   const pathname = usePathname();
   return (
     <nav className="z-10 text-xl">
@@ -30,7 +30,7 @@ export default async function Navigation() {
             About
           </Link>
         </li>
-        <Guest pathname={pathname} />
+        <Guest />
       </ul>
     </nav>
   );
