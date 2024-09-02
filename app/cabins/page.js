@@ -6,7 +6,7 @@ import Filter from "@/app/_components/Filter";
 import ReservationReminder from "@/app/_components/ReservationReminder";
 
 // export const revalidate = 3600; // this page is not static anymore
-// export const revalidate = 0;
+export const revalidate = 0;
 
 export const metadata = {
   title: "Cabins",
