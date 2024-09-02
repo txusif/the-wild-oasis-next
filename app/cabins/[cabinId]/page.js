@@ -31,7 +31,7 @@ export default async function Page({ params }) {
       <Cabin cabin={cabin} />
 
       <div>
-        <h2 className="mb-10 text-center text-5xl font-semibold text-accent-400">
+        <h2 className="mb-6 text-center text-2xl font-semibold text-accent-400 md:text-3xl lg:mb-10 lg:text-5xl">
           Reserve {cabin.name} today. Pay on arrival.
         </h2>
 
@@ -42,5 +42,3 @@ export default async function Page({ params }) {
     </div>
   );
 }
-
-// console.log("🚀 ~ Page ~ URL:", URL);

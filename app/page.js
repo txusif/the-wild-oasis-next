@@ -5,7 +5,7 @@ import bgImage from "@/public/bg.png";
 
 export default function Page() {
   return (
-    <main className="mt-24">
+    <main className="mt-28 lg:mt-24">
       <Image
         src={bgImage}
         fill
@@ -15,13 +15,13 @@ export default function Page() {
         className="object-cover object-top"
       />
 
-    <div className="relative z-10 text-center">
-        <h1 className="text-primary-50 mb-10 text-8xl font-normal tracking-tight">
+      <div className="relative z-10 text-center">
+        <h1 className="mb-6 text-3xl font-normal tracking-tight text-primary-50 md:text-5xl lg:mb-10 lg:text-8xl">
           Welcome to paradise.
         </h1>
         <Link
           href="/cabins"
-          className="bg-accent-500 text-primary-800 hover:bg-accent-600 rounded-sm px-8 py-6 text-lg font-semibold transition-all"
+          className="rounded-sm bg-accent-500 px-6 py-4 text-base font-semibold text-primary-800 transition-all hover:bg-accent-600 md:text-lg lg:px-8 lg:py-6"
         >
           Explore luxury cabins
         </Link>

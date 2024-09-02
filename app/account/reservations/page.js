@@ -20,7 +20,8 @@ export default async function Page() {
 
       {bookings.length === 0 ? (
         <p className="text-lg">
-          You have no reservations yet. Check out our{" "}
+          You have no reservations yet. <br className="block lg:hidden" />
+          Check out our{" "}
           <Link className="text-accent-500 underline" href="/cabins">
             luxury cabins &rarr;
           </Link>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import aboutImage1 from "@/public/about-1.jpg";
+import aboutImage2 from "@/public/about-2.jpg";
 import { getCabins } from "@/app/_lib/data-service";
 
 export const revalidate = 86400;
@@ -15,13 +16,13 @@ export default async function Page() {
   const numCabins = cabins?.length;
 
   return (
-    <div className="grid grid-cols-5 items-center gap-x-24 gap-y-32 text-lg">
-      <div className="col-span-3">
-        <h1 className="mb-10 text-4xl font-medium text-accent-400">
+    <div className="flex flex-col items-center gap-y-5 text-lg lg:grid lg:grid-cols-5 lg:gap-x-24 lg:gap-y-32">
+      <div className="order-2 lg:order-none lg:col-span-3">
+        <h1 className="mb-3 text-2xl font-medium text-accent-400 lg:mb-10 lg:text-4xl">
           Welcome to The Wild Oasis
         </h1>
 
-        <div className="space-y-8">
+        <div className="space-y-4 text-primary-200 lg:space-y-8">
           <p>
             Where nature&apos;s beauty and comfortable living blend seamlessly.
             Hidden away in the heart of the Italian Dolomites, this is your
@@ -43,7 +44,7 @@ export default async function Page() {
         </div>
       </div>
 
-      <div className="col-span-2">
+      <div className="order-1 lg:order-none lg:col-span-2">
         <Image
           src={aboutImage1}
           alt="Family sitting around a fire pit in front of cabin"
@@ -52,24 +53,21 @@ export default async function Page() {
         />
       </div>
 
-      <div className="relative col-span-2 aspect-square">
+      <div className="order-3 aspect-square lg:relative lg:order-none lg:col-span-2">
         <Image
-          src="/about-2.jpg"
+          src={aboutImage2}
           alt="Family that manages The Wild Oasis"
-          fill
-          className="object-cover"
           quality={100}
-
-          // placeholder="blur" // only works with static images
+          placeholder="blur" // only works with static images
         />
       </div>
 
-      <div className="col-span-3">
-        <h1 className="mb-10 text-4xl font-medium text-accent-400">
+      <div className="order-4 lg:order-none lg:col-span-3">
+        <h1 className="mb-3 text-2xl font-medium text-accent-400 lg:mb-10 lg:text-4xl">
           Managed by our family since 1962
         </h1>
 
-        <div className="space-y-8">
+        <div className="space-y-4 text-primary-200 lg:space-y-8">
           <p>
             Since 1962, The Wild Oasis has been a cherished family-run retreat.
             Started by our grandparents, this haven has been nurtured with love
@@ -88,7 +86,7 @@ export default async function Page() {
           <div>
             <Link
               href="/cabins"
-              className="mt-4 inline-block rounded-sm bg-accent-500 px-8 py-5 text-lg font-semibold text-primary-800 transition-all hover:bg-accent-600"
+              className="mt-4 inline-block rounded-sm bg-accent-500 px-6 py-4 lg:px-8 lg:py-5 text-base font-semibold text-primary-800 transition-all hover:bg-accent-600 lg:text-lg"
             >
               Explore our luxury cabins
             </Link>

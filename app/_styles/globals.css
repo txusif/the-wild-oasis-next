@@ -41,6 +41,22 @@
   margin: 0 !important;
 }
 
+
+.rdp-months {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+/* Media query for small screens */
+@media (max-width: 600px) {
+  .rdp-months {
+    flex-direction: column;
+  }
+}
+
+
+
 /* To hide the side scrollbar */
 
 /* body::-webkit-scrollbar {

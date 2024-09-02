@@ -37,7 +37,7 @@ function DateSelector({ settings, bookedDates, cabin }) {
   const cabinPrice = (regularPrice - discount) * numNights;
 
   return (
-    <div className="flex flex-col justify-between">
+    <div className="flex flex-col justify-between max-lg:w-full">
       <DayPicker
         className="place-self-center pt-12"
         mode="range"
@@ -56,9 +56,9 @@ function DateSelector({ settings, bookedDates, cabin }) {
         }
       />
 
-      <div className="flex h-[72px] items-center justify-between bg-accent-500 px-8 text-primary-800">
-        <div className="flex items-baseline gap-6">
-          <p className="flex items-baseline gap-2">
+      <div className="mt-5 flex h-max items-center justify-between bg-accent-500 px-8 text-primary-800 lg:mt-0 lg:h-[72px]">
+        <div className="gap-3 max-lg:grid max-lg:grid-cols-2 lg:flex lg:items-baseline lg:gap-6">
+          <p className="col-span-2 flex items-baseline gap-2 max-lg:py-2">
             {discount > 0 ? (
               <>
                 <span className="text-2xl">${regularPrice - discount}</span>
@@ -73,11 +73,13 @@ function DateSelector({ settings, bookedDates, cabin }) {
           </p>
           {numNights ? (
             <>
-              <p className="bg-accent-600 px-3 py-2 text-2xl">
+              <p className="rounded-sm bg-accent-600 px-3 py-2 text-2xl max-lg:h-max max-lg:w-max">
                 <span>&times;</span> <span>{numNights}</span>
               </p>
               <p>
-                <span className="text-lg font-bold uppercase">Total</span>{" "}
+                <span className="text-base font-bold uppercase lg:text-lg">
+                  Total
+                </span>{" "}
                 <span className="text-2xl font-semibold">${cabinPrice}</span>
               </p>
             </>
@@ -86,7 +88,7 @@ function DateSelector({ settings, bookedDates, cabin }) {
 
         {range.from || range.to ? (
           <button
-            className="rounded-sm border border-primary-800 px-4 py-2 text-sm font-semibold"
+            className="mb-1.5 mt-auto rounded-sm border border-primary-800 px-4 py-2 text-sm font-semibold lg:mb-0 lg:mt-0"
             onClick={resetRange}
           >
             Clear

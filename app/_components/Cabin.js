@@ -7,8 +7,8 @@ function Cabin({ cabin }) {
     cabin;
 
   return (
-    <div className="mb-24 grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 px-10 py-3">
-      <div className="relative -translate-x-3 scale-[1.15]">
+    <div className="mb-12 gap-20 border border-primary-800 px-3 py-3 lg:mb-24 lg:grid lg:grid-cols-[3fr_4fr] lg:px-10">
+      <div className="relative scale-[1.15] max-lg:h-[300px] lg:-translate-x-3">
         <Image
           src={image}
           alt={`Cabin ${name}`}
@@ -18,7 +18,7 @@ function Cabin({ cabin }) {
       </div>
 
       <div>
-        <h3 className="mb-5 w-[150%] translate-x-[-254px] bg-primary-950 p-6 pb-1 text-7xl font-black text-accent-100">
+        <h3 className="mb-0 rounded-sm bg-primary-950/50 pb-1 text-4xl font-black text-accent-100 max-lg:w-max max-lg:translate-y-[-35px] max-lg:px-2 max-lg:pt-2 lg:mb-5 lg:w-[150%] lg:translate-x-[-254px] lg:bg-primary-950 lg:p-6 lg:text-7xl">
           Cabin {name}
         </h3>
 
@@ -33,7 +33,7 @@ function Cabin({ cabin }) {
               For up to <span className="font-bold">{maxCapacity}</span> guests
             </span>
           </li>
-          <li className="flex items-center gap-3">
+          <li className="flex gap-3 lg:items-center">
             <MapPinIcon className="h-5 w-5 text-primary-600" />
             <span className="text-lg">
               Located in the heart of the{" "}

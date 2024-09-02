@@ -14,16 +14,20 @@ async function Reservation({ cabin }) {
   const session = await auth();
 
   return (
-    <div className="grid min-h-[400px] grid-cols-2 border border-primary-800">
+    <div className="rounded-sm border border-primary-800 max-lg:flex max-lg:flex-col max-lg:justify-center lg:grid lg:min-h-[400px] lg:grid-cols-2">
       <DateSelector
         settings={settings}
         bookedDates={bookedDates}
         cabin={cabin}
       />
       {session?.user ? (
-        <ReservationForm breakfastPrice={settings.breakfastPrice} cabin={cabin} user={session.user} />
+        <ReservationForm
+          breakfastPrice={settings.breakfastPrice}
+          cabin={cabin}
+          user={session.user}
+        />
       ) : (
-       <LoginMessage />
+        <LoginMessage />
       )}
     </div>
   );
