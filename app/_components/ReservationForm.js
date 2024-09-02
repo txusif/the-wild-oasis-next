@@ -46,7 +46,7 @@ function ReservationForm({ breakfastPrice, cabin, user }) {
 
   return (
     <div className="scale-[1.01]">
-      <div className="flex items-center justify-between bg-primary-800 px-16 py-2 text-primary-300">
+      <div className="flex items-center justify-between bg-primary-800 px-4 py-2 text-primary-300 md:px-16">
         <p>Logged in as</p>
 
         <div className="flex items-center gap-4">

@@ -31,8 +31,8 @@ export default async function Page({ params }) {
       <Cabin cabin={cabin} />
 
       <div>
-        <h2 className="mb-6 text-center text-2xl font-semibold text-accent-400 md:text-3xl lg:mb-10 lg:text-5xl">
-          Reserve {cabin.name} today. Pay on arrival.
+        <h2 className="mb-6 text-center text-3xl font-semibold text-accent-400  lg:mb-10 lg:text-5xl">
+          Reserve {cabin.name} today.<br className="block md:hidden" /> Pay on arrival.
         </h2>
 
         <Suspense fallback={<Spinner />}>
