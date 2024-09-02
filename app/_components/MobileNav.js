@@ -7,9 +7,11 @@ import Image from "next/image";
 import logo from "@/public/logo.png";
 import Guest from "@/app/_components/Guest";
 import { usePathname } from "next/navigation";
+import SignOutButton from "@/app/_components/SignOutButton";
 
-function MobileNav() {
+function MobileNav({ session }) {
   const pathname = usePathname();
+
   return (
     <Sheet>
       <SheetTrigger className="flex items-center justify-center">
@@ -43,7 +45,9 @@ function MobileNav() {
               <Link
                 href="/cabins"
                 className={`transition-colors hover:text-accent-400 ${
-                  pathname === "/cabins" ? "border-b text-accent-400" : ""
+                  pathname === "/cabins"
+                    ? "border-b-2 border-accent-400 text-accent-400"
+                    : ""
                 }`}
               >
                 Cabins
@@ -53,13 +57,21 @@ function MobileNav() {
               <Link
                 href="/about"
                 className={`transition-colors hover:text-accent-400 ${
-                  pathname === "/about" ? "border-b text-accent-400" : ""
+                  pathname === "/about"
+                    ? "border-b-2 border-accent-400 text-accent-400"
+                    : ""
                 }`}
               >
                 About
               </Link>
             </li>
-            <Guest />
+            <Guest pathname={pathname} />
+
+            {session?.user ? (
+              <li>
+                <SignOutButton />
+              </li>
+            ) : null}
           </ul>
         </nav>
       </SheetContent>

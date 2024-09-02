@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import {  useAuth } from "@/app/_context/AuthContext";
+import { useAuth } from "@/app/_context/AuthContext";
 
-function Guest() {
+function Guest({ pathname }) {
   const session = useAuth();
 
   return (
@@ -19,7 +19,15 @@ function Guest() {
             className="h-8 rounded-full"
             referrerPolicy="no-referrer"
           />
-          <span>Guest area</span>
+          <span
+            className={`${
+              pathname === "/account"
+                ? "max-md:border-b-2 max-md:border-accent-400 text-accent-400"
+                : ""
+            }`}
+          >
+            Guest area
+          </span>
         </Link>
       ) : (
         <Link

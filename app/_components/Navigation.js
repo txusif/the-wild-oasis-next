@@ -30,7 +30,7 @@ export default async function Navigation() {
             About
           </Link>
         </li>
-        <Guest />
+        <Guest pathname={pathname} />
       </ul>
     </nav>
   );

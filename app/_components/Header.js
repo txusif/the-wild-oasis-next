@@ -1,8 +1,10 @@
 import Logo from "@/app/_components/Logo";
 import Navigation from "@/app/_components/Navigation";
 import MobileNav from "@/app/_components/MobileNav";
+import { auth } from "@/app/_lib/auth";
 
-function Header() {
+async function Header() {
+  const session = await auth();
   return (
     <header className="border-b border-primary-900 px-8 py-5">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
@@ -12,7 +14,7 @@ function Header() {
         </div>
 
         <div className="md:hidden">
-          <MobileNav />
+          <MobileNav session={session} />
         </div>
       </div>
     </header>
